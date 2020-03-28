@@ -7,8 +7,10 @@ namespace CSharpFundamentals
     {
         public static void Main(string[] args)
         {
-            var numbers = new List<int>{1, 2};
-            var smallests = GetSmallest(numbers, 3);
+            var numbers = new List<int>{};
+            //var smallests = GetSmallest(numbers, 3);
+            //var smallests = GetSmallest(number, -1);
+             var smallests = GetSmallest(null, 1);
             
             foreach(var number in smallests)
                 Console.WriteLine(number);
@@ -16,6 +18,16 @@ namespace CSharpFundamentals
         
         public static List<int> GetSmallest(List<int> list, int count)
         {
+           // if(count > list.Count)
+           //     throw new ArgumentOutOfRangeException("count", "Count cannot be greater han the number of elements in the list.");
+            
+            // if(list.Count == 0)
+            if(list == null)
+                throw new ArgumentOutOfRangeException("list");
+                
+            if(count > list.Count || count <= 0)
+                throw new ArgumentOutOfRangeException("count", "Count should be between 1 and the number of elements in the list.");
+            
             var buffer = new List<int>(list)
             var smallest = new List<int>();
             
